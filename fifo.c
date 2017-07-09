@@ -21,8 +21,8 @@ int fifo_evict() {
 	int frame = first;
 	first++;
 	if (first == memsize)
-		first = 0
-	return first;
+		first = 0;
+	return frame;
 }
 
 /* This function is called on each access to a page to update any information
