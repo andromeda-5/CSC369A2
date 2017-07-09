@@ -35,22 +35,20 @@ int allocate_frame(pgtbl_entry_t *p) {
 	if(frame == -1) { // Didn't find a free page.
 		// Call replacement algorithm's evict function to select victim
 		frame = evict_fcn();
-
 		// All frames were in use, so victim frame must hold some page
 		// Write victim page to swap, if needed, and update pagetable
 		// IMPLEMENTATION NEEDED
 
 		// get that victim frame from (simulated) physical memory
 		pgtbl_entry_t *pte = coremap[frame].pte;
-		
 		// swap that victim frame if dirty
 		if (pte->frame & PG_DIRTY) {
-			off_t swap_offset = swap_pageout(frame, pte->swap_off);
-			// adjust the offset
+			int swap_offset = swap_pageout(frame, pte->swap_off);
 			pte->swap_off = swap_offset;
 			evict_dirty_count++; 
-		} else 
+		} else {
 			evict_clean_count++;
+		}
 
 		//reset/set valid, dirty and swap bits, keep reference as is?
 		pte->frame &= ~PG_VALID; //page no longer in memory
@@ -158,8 +156,7 @@ char *find_physpage(addr_t vaddr, char type) {
 	pgtbl_entry_t *pgtbl = (pgtbl_entry_t *)(pgdir[idx].pde & PAGE_MASK);
 
 	// Use vaddr to get index into 2nd-level page table and initialize 'p'
-	idx = PGTBL_INDEX(vaddr);
-	p = &pgtbl[idx];
+	p = &pgtbl[PGTBL_INDEX(vaddr)];
 
 	// Check if p is valid or not, on swap or not, and handle appropriately
 	if (!(p->frame & PG_VALID)){
@@ -184,6 +181,7 @@ char *find_physpage(addr_t vaddr, char type) {
 			//initialize frame
 			init_frame(frame, vaddr);
 
+			p->frame = frame << PAGE_SHIFT;
 			//set dirty bit
 			p->frame |= PG_DIRTY;
 			
