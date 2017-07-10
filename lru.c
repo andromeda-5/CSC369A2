@@ -12,7 +12,7 @@ extern int debug;
 
 extern struct frame *coremap;
 
-unsigned long timestamp;
+unsigned long long timestamp;
 /* Page to evict is chosen using the accurate LRU algorithm.
  * Returns the page frame number (which is also the index in the coremap)
  * for the page that is to be evicted.
