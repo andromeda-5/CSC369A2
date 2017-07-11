@@ -21,7 +21,8 @@ int clock_hand;
 int clock_evict() {
 	int evict_frame;
 
-	while(1) {
+	//wait until we have a page to kick out
+	while(1) { 
 		pgtbl_entry_t *pte = coremap[clock_hand].pte;
 		if (pte->frame & PG_REF) {
 			pte->frame &= ~PG_REF;
