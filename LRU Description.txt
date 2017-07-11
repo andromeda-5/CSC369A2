@@ -2,45 +2,134 @@
 simpleloop
 
 memsize 50
-						rand		fifo		clock		LRU			opt
-Hit count               7344		7391		7575
-Miss count              3024		2977		2793
-Clean Evictions			250			202			89
-Dirty Evictions			2724		2725		2654
-Total References		10368		10368		10368
-Hit rate                70.8333		71.2867		73.0613
-Miss rate               29.1667		28.7133		26.9387
+			rand		fifo		clock		LRU			opt
+Hit count               7344		7391		7575		7732
+Miss count              3024		2977		2793		2788
+Clean Evictions		250		202		89		86	
+Dirty Evictions		2724		2725		2654		2652
+Total References	10368		10368		10368		10520
+Hit rate                70.8333		71.2867		73.0613		73.4981
+Miss rate               29.1667		28.7133		26.9387		26.5019
 
 memsize 100
-						rand		fifo		clock		LRU			opt
-Hit count               7591		7603		7669
-Miss count              2777		2765		2699
-Clean Evictions         60			44			5
-Dirty Evictions	        2617		2621		2594
-Total References        10368		10368		10368
-Hit Rate                73.2157		73.3314		73.9680
-Miss Rate               26.7843		26.6686		26.0320
-
+			rand		fifo		clock		LRU			opt
+Hit count               7591		7603		7669		7824
+Miss count              2777		2765		2699		2696
+Clean Evictions         60		44		5		3
+Dirty Evictions	        2617		2621		2594		2593
+Total References        10368		10368		10368		10520
+Hit Rate                73.2157		73.3314		73.9680		74.3726
+Miss Rate               26.7843		26.6686		26.0320		25.6274
 
 memsize 150
-						rand		fifo		clock		LRU			opt
-Hit Count               7647		7643		7676
-Miss Count              2721		2725		2692
-Clean Evictions         16			16			0
-Dirty Evictions         2555		2559		2542
-Total References        10368		10368		10368
-Hit Rate                73.7558		73.7172		74.0355
-Miss Rate               26.2442		26.2828		25.9645
+			rand		fifo		clock		LRU			opt
+Hit Count               7647		7643		7676		7828
+Miss Count              2721		2725		2692		2692
+Clean Evictions         16		16		0		0
+Dirty Evictions         2555		2559		2542		2542
+Total References        10368		10368		10368		10520
+Hit Rate                73.7558		73.7172		74.0355		74.4106
+Miss Rate               26.2442		26.2828		25.9645		25.5894
 
 memsize 200
-						rand		fifo		clock		LRU			opt
-Hit Count               7644		7651		7676
-Miss Count              2724		2717		2692
-Clean Evictions         17			12			0
-Dirty Evictions         2507		2505		2492
-Total References        10368		10368		10368
-Hit Rate                73.7269		73.7944		74.0355
-Miss Rate               26.2731		26.2056		25.9645
+			rand		fifo		clock		LRU			opt
+Hit Count               7644		7651		7676		7828
+Miss Count              2724		2717		2692		2692
+Clean Evictions         17		12		0		0
+Dirty Evictions         2507		2505		2492		2492
+Total References        10368		10368		10368		10520
+Hit Rate                73.7269		73.7944		74.0355		74.4106
+Miss Rate               26.2731		26.2056		25.9645		25.5894
+
+---------------------------------------------------------------------------------------------
+matmul
+
+memsize 50
+			rand		fifo		clock		LRU			opt
+Hit count               1891749		1760787		1846827		1846828
+Miss count              996307		1127269		1041229		1041228
+Clean Evictions		956624		1083219		1040064		1040066	
+Dirty Evictions		39633		44000		1115		1112
+Total References	2888056		2888056		2888056		2888056
+Hit rate                65.5025		60.9679		63.9471		63.9471
+Miss rate               34.4975		39.0321		36.0529		36.0529
+
+memsize 100
+			rand		fifo		clock		LRU			opt
+Hit count               2564428		1804500		1886256		1881593
+Miss count              323628		1083556		1001800		1006463
+Clean Evictions         315976		1061228		1000614		1005277
+Dirty Evictions	        7552		22228		1086		1086
+Total References        2888056		2888056		2888056		2888056
+Hit Rate                88.7943		62.4815		65.3123		65.1508
+Miss Rate               11.2057		37.5185		34.6877		34.8492
+
+memsize 150
+			rand		fifo		clock		LRU			opt
+Hit Count               2791315		2853640		2847732		2855163
+Miss Count              96741		34416		40324		32893
+Clean Evictions         94240		32945		39088		31658
+Dirty Evictions         2351		1321		1086		1085
+Total References        2888056		2888056		2888056		2888056
+Hit Rate                96.6503		98.8083		98.6038		98.8611
+Miss Rate               3.3497		1.1917		1.3962		1.1389
+
+memsize 200
+			rand		fifo		clock		LRU			opt
+Hit Count               2831554		2854161		2855161		2855175
+Miss Count              56502		33895		32895		32881
+Clean Evictions         54655		32435		31610		31596
+Dirty Evictions         1647		1260		1085		1085
+Total References        2888056		2888056		2888056		2888056
+Hit Rate                98.0436		98.8264		98.8610		98.8615
+Miss Rate               1.9564		1.1736		1.1390		1.1385
+
+---------------------------------------------------------------------------------------------
+blocked
+
+memsize 50
+			rand		fifo		clock		LRU			opt
+Hit count               2409851		2411720		2412412		2413012
+Miss count              8301		6432		5740		5140
+Clean Evictions		5700		4103		3247		2749	
+Dirty Evictions		2551		2279		2443		2341
+Total References	2418152		2418152		2418152		2418152
+Hit rate                99.6567		99.7340		99.7626		99.7874
+Miss rate               0.3433		0.2660		0.2374		0.2126
+
+memsize 100
+			rand		fifo		clock		LRU			opt
+Hit count               2412881		2413835		2413966		2414359
+Miss count              5271		4317		4186		3793
+Clean Evictions         3403		2732		2610		2606
+Dirty Evictions	        1768		1485		1476		1087
+Total References        2418152		2418152		2418152		2418152
+Hit Rate                99.7820		99.8215		99.8269		99.8431
+Miss Rate               0.2180		0.1785		0.1731		0.1569
+
+memsize 150
+			rand		fifo		clock		LRU			opt
+Hit Count               2413805		2413936		2414364		2414376
+Miss Count              4347		4216		3788		3776
+Clean Evictions         2724		2638		2572		2560
+Dirty Evictions         1473		1428		1066		1066
+Total References        2418152		2418152		2418152		2418152
+Hit Rate                99.8202		99.8257		99.8434		99.8438
+Miss Rate               0.1798		0.1743		0.1566		0.1562
+
+memsize 200
+			rand		fifo		clock		LRU			opt
+Hit Count               2414370		2414982		2414944		2414449
+Miss Count              3782		3170		3208		3703
+Clean Evictions         2240		1867		1942		2437
+Dirty Evictions         1342		1103		1066		1066
+Total References        2418152		2418152		2418152		2418152
+Hit Rate                99.8436		99.8689		99.8673		99.8469
+Miss Rate               0.1564		0.1311		0.1327		0.1531
+
+
+
+
 
 LRU
 
