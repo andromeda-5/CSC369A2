@@ -1,0 +1,4 @@
+LRU
+
+This algorithm evicts the page that used least often. In my LRU algorithm, a new variable called timestamp is added to the structure pgtbl_entry_t to keep track of the time. A global unsigned int timestamp is initialized as zero, it will count the time of access to a page. We will assign the global timestamp to the timestamp variable under pgtbl_entry_t everytime we tried to access. And then the global timestamp will be added by one to keep the timestamp up-to-date. When we are evicting a page, we go through all the frames to find the frame with the smallest timestamp. The smaller the timestamp is, the longer the page hasn't been used. Therefore, we return the frame number with the smallest timestamp.
+The hit count always increases as the memory size increases. So the hit rate also increases or stays the same when the memory size increases.
