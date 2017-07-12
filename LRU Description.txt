@@ -131,9 +131,17 @@ Miss Rate               0.1564		0.1311		0.1327		0.1531
 
 
 
+Algorithms Comparison
+
+From the table, we can see that for most algorithms, larger memory size causes greater hit rate and smaller clean/dirty eviction. This is beacuse the larger memory size allows storage of more data, and therefore reduces the times of evictions. 
+OPT algorithm performs the best compare to other algorithms. Since other algorithms make decisions based on the past, OPT alogorithm predicts the future. 
+For comparison among different trace files, smaller files have similar hite rates for all algorithms, while larger files have higher hit rates under OPT and CLOCK algorithms.
+
+
+ 
 LRU
 
-This algorithm evicts the page that used least often. In my LRU algorithm, a new variable called timestamp is added to the structure pgtbl_entry_t to keep track of the time. A global unsigned long long timestamp (to fit as many integers as possible without overflow) is initialized as zero, it will count the time of access to a page. We will assign the global timestamp to the timestamp variable under pgtbl_entry_t everytime we tried to access. And then the global timestamp will be added by one to keep the timestamp up-to-date. When we are evicting a page, we go through all the frames to find the frame with the smallest timestamp. The smaller the timestamp is, the longer the page hasn't been used. Therefore, we return the frame number with the smallest timestamp.
-The hit count always increases as the memory size increases. So the hit rate also increases or stays the same when the memory size increases.
+This algorithm evicts the page that used least often. In my LRU algorithm, a new variable called timestamp is added to the structure pgtbl_entry_t to keep track of the time. When we are evicting a page, we go through all the frames to find the frame with the smallest timestamp. The smaller the timestamp is, the longer the page hasn't been used. Therefore, we return the frame number with the smallest timestamp. 
+The hit rates for simpleloop, block and newtrace are similar with respect to different memory sizes. Only the hate rates for matmul increased from 63.95% to 98.86% when memory size changed from 50 to 200. Therefore, the increased memory size does not cause increased hit rate for certain. The Belady's algorithm is not shown very obviously under this simulation.
 
 
